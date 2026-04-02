@@ -1,0 +1,11 @@
+{
+  "name": "product-shop",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "dependencies": {
+    "pg": "^8.13.3"
+  }
+}
