@@ -59,14 +59,18 @@ function buildCards(products) {
     const disabled = p.stock === 0 ? 'disabled' : '';
     return `
       <div class="card">
-        <div class="emoji">${p.image}</div>
-        <h2>${p.name}</h2>
-        <p class="price">$${parseFloat(p.price).toFixed(2)}</p>
-        <span class="stock ${cls}">${label}</span>
-        <form method="POST" action="/order">
-          <input type="hidden" name="id" value="${p.id}">
-          <button type="submit" ${disabled}>Order Now</button>
-        </form>
+        <div class="card-image">
+          ${p.image}
+          <span class="stock ${cls}">${label}</span>
+        </div>
+        <div class="card-body">
+          <h2>${p.name}</h2>
+          <p class="price">$${parseFloat(p.price).toFixed(2)} <span>USD</span></p>
+          <form method="POST" action="/order">
+            <input type="hidden" name="id" value="${p.id}">
+            <button type="submit" ${disabled}>${p.stock === 0 ? 'Out of Stock' : 'Order Now'}</button>
+          </form>
+        </div>
       </div>`;
   }).join('');
 }
@@ -77,7 +81,12 @@ function buildOrderRows(orders) {
   }
   return orders.map(o => {
     const time = new Date(o.created_at).toLocaleString();
-    return `<tr><td>#${o.id}</td><td>${o.product_name}</td><td>$${parseFloat(o.price).toFixed(2)}</td><td>${time}</td></tr>`;
+    return `<tr>
+      <td class="order-id">#${o.id}</td>
+      <td>${o.product_name}</td>
+      <td>$${parseFloat(o.price).toFixed(2)}</td>
+      <td>${time}</td>
+    </tr>`;
   }).join('');
 }
 
