@@ -1,5 +1,10 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: ui-monospace, 'SF Mono', 'Cascadia Code', 'Fira Code', Consolas, monospace; background: #f4f5f7; color: #1a1a2e; }
+body {
+  font-family: ui-monospace, 'SF Mono', 'Cascadia Code', 'Fira Code', Consolas, monospace;
+  font-variant-numeric: tabular-nums;
+  background: #f4f5f7;
+  color: #1a1a2e;
+}
 
 /* ── Header ── */
 header {
